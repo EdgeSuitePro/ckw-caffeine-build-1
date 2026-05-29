@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Della+Respira&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --radius: 0.625rem;
+        /* Off-white base for light mode (staff CRM) */
+        --background: 0.97 0.01 60;
+        --foreground: 0.20 0.01 30;
+        --card: 0.99 0.005 60;
+        --card-foreground: 0.20 0.01 30;
+        --popover: 0.99 0.005 60;
+        --popover-foreground: 0.20 0.01 30;
+        /* Damascus Bronze #c8754e as primary */
+        --primary: 0.62 0.12 40;
+        --primary-foreground: 0.97 0.01 60;
+        /* Honed Sage as secondary */
+        --secondary: 0.62 0.03 130;
+        --secondary-foreground: 0.20 0.01 30;
+        --muted: 0.94 0.01 60;
+        --muted-foreground: 0.45 0.01 30;
+        /* Damascus Bronze #c8754e for accent */
+        --accent: 0.62 0.12 40;
+        --accent-foreground: 0.97 0.01 60;
+        --destructive: 0.577 0.245 27.325;
+        --destructive-foreground: 0.985 0 0;
+        --border: 0.88 0.01 60;
+        --input: 0.88 0.01 60;
+        --ring: 0.62 0.12 40;
+        --chart-1: 0.62 0.12 40;
+        --chart-2: 0.62 0.03 130;
+        --chart-3: 0.35 0.01 30;
+        --chart-4: 0.70 0.12 40;
+        --chart-5: 0.50 0.03 130;
+    }
+
+    .dark {
+        /* Carbon Black base for dark mode (customer site) */
+        --background: 0.20 0.01 30;
+        --foreground: 0.95 0.01 60;
+        /* Steel Gray for cards */
+        --card: 0.35 0.01 200;
+        --card-foreground: 0.95 0.01 60;
+        --popover: 0.30 0.01 200;
+        --popover-foreground: 0.95 0.01 60;
+        /* Damascus Bronze #c8754e as primary */
+        --primary: 0.62 0.12 40;
+        --primary-foreground: 0.20 0.01 30;
+        /* Honed Sage as secondary */
+        --secondary: 0.62 0.04 130;
+        --secondary-foreground: 0.20 0.01 30;
+        --muted: 0.30 0.01 200;
+        --muted-foreground: 0.70 0.02 60;
+        /* Damascus Bronze #c8754e for accent */
+        --accent: 0.62 0.12 40;
+        --accent-foreground: 0.95 0.01 60;
+        --destructive: 0.60 0.20 27;
+        --destructive-foreground: 0.95 0.01 60;
+        --border: 0.40 0.01 200;
+        --input: 0.35 0.01 200;
+        --ring: 0.62 0.12 40;
+        --chart-1: 0.62 0.12 40;
+        --chart-2: 0.62 0.04 130;
+        --chart-3: 0.50 0.01 200;
+        --chart-4: 0.70 0.12 40;
+        --chart-5: 0.55 0.04 130;
+    }
+
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+        font-family: 'Montserrat', sans-serif;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Della Respira', serif;
+    }
+}
+
+@layer utilities {
+    .text-balance {
+        text-wrap: balance;
+    }
+}
+
+/* Custom animations */
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.animate-shimmer {
+    animation: shimmer 3s infinite linear;
+    background: linear-gradient(
+        to right,
+        transparent 0%,
+        oklch(var(--accent) / 0.1) 50%,
+        transparent 100%
+    );
+    background-size: 1000px 100%;
+}
+
+/* Smooth transitions */
+* {
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 200ms;
+}
+
+/* Custom reservation input styles with Carbon Black borders */
+.reservation-input {
+    border-width: 1px;
+    border-color: #2C2C2C;
+    transition: all 0.2s ease-in-out;
+}
+
+.reservation-input:focus {
+    outline: none;
+    border-color: #2C2C2C;
+    box-shadow: 0 0 0 3px oklch(0.97 0.01 60 / 0.15);
+}
+
+.dark .reservation-input {
+    border-color: #2C2C2C;
+}
+
+.dark .reservation-input:focus {
+    border-color: #2C2C2C;
+    box-shadow: 0 0 0 3px oklch(0.97 0.01 60 / 0.1);
+}
